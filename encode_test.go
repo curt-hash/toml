@@ -132,6 +132,10 @@ func TestEncode(t *testing.T) {
 			},
 			wantOutput: fmt.Sprintf("Date = %s\nInt = 1\n", dateStr),
 		},
+		"duration field": {
+			input: struct { Timeout time.Duration }{10 * time.Second},
+			wantOutput: fmt.Sprintf("Timeout = \"10s\"\n"),
+		},
 		"array fields": {
 			input: struct {
 				IntArray0 [0]int

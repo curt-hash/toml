@@ -111,7 +111,7 @@ func (enc *Encoder) encode(key Key, rv reflect.Value) {
 	// Basically, this prevents the encoder for handling these types as
 	// generic structs (or whatever the underlying type of a TextMarshaler is).
 	switch rv.Interface().(type) {
-	case time.Time, TextMarshaler:
+	case time.Time, TextMarshaler, time.Duration:
 		enc.keyEqElement(key, rv)
 		return
 	}
@@ -169,6 +169,9 @@ func (enc *Encoder) eElement(rv reflect.Value) {
 		} else {
 			enc.writeQuoted(string(s))
 		}
+		return
+	case time.Duration:
+		enc.writeQuoted(v.String())
 		return
 	}
 	switch rv.Kind() {
