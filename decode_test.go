@@ -16,6 +16,7 @@ age = 250
 andrew = "gallant"
 kait = "brady"
 now = 1987-07-05T05:45:00Z
+timeout = "10s"
 nowEast = 2017-06-22T16:15:21+08:00
 nowWest = 2017-06-22T02:14:36-06:00
 yesOrNo = true
@@ -40,6 +41,7 @@ cauchy = "cat 2"
 		Pi      float64
 		YesOrNo bool
 		Now     time.Time
+		Timeout time.Duration
 		NowEast time.Time
 		NowWest time.Time
 		Andrew  string
@@ -70,6 +72,7 @@ cauchy = "cat 2"
 		Andrew:  "gallant",
 		Kait:    "brady",
 		Now:     now,
+		Timeout: 10 * time.Second,
 		NowEast: nowEast,
 		NowWest: nowWest,
 		YesOrNo: true,
